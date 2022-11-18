@@ -1,0 +1,19 @@
+version: "0.1.0"
+services:
+  oss-cad-suite:
+    container_name: oss-cad-suite
+    build: 
+      context: .
+      dockerfile: dockerfile
+    environment:
+      - DISPLAY=${DISPLAY}
+    network_mode: host
+    volumes:
+      - oss-cad-suite:/home/vscode
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./app:/home/vscode/app
+      # - ~/.ssh/:/home/vscode/.ssh
+    command: /bin/bash -c "while sleep 1000; do :; done"
+
+volumes:
+  oss-cad-suite:
